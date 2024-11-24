@@ -1,0 +1,8 @@
+/* src/app/components/listar-festivos/listar-festivos.component.css */
+.container {
+    margin: 20px;
+  }
+  
+  ngx-datatable {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

@@ -1,0 +1,13 @@
+<!-- src/app/components/listar-festivos/listar-festivos.component.html -->
+<div class="container">
+    <h1>Lista de Días Festivos</h1>
+    <ngx-datatable
+      class="material"
+      [rows]="festivos"
+      [columns]="columns"
+      [headerHeight]="50"
+      [rowHeight]="'auto'"
+      [footerHeight]="50"
+      [columnMode]="'force'">
+    </ngx-datatable>
+  </div>
