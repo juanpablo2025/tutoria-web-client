@@ -1,8 +1,50 @@
 /* src/app/components/listar-festivos/listar-festivos.component.css */
 .container {
-    margin: 20px;
-  }
-  
-  ngx-datatable {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.year-selector {
+  margin-bottom: 20px;
+}
+
+.year-selector label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.year-selector input {
+  width: 100px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+.no-data {
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+}
+
+.festivos-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.festivos-table th,
+.festivos-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.festivos-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}

@@ -1,13 +1,46 @@
-<!-- src/app/components/listar-festivos/listar-festivos.component.html -->
 <div class="container">
-    <h1>Lista de Días Festivos</h1>
-    <ngx-datatable
-      class="material"
-      [rows]="festivos"
-      [columns]="columns"
-      [headerHeight]="50"
-      [rowHeight]="'auto'"
-      [footerHeight]="50"
-      [columnMode]="'force'">
-    </ngx-datatable>
+  <h1>Lista de Días Festivos</h1>
+
+  <!-- Selector de año -->
+  <div class="year-selector">
+    <label for="year">Selecciona un año:</label>
+    <input
+      id="year"
+      type="number"
+      [(ngModel)]="year"
+      (change)="cambiarYear(year)"
+      min="2000"
+      max="2100"
+    />
   </div>
+
+  <!-- Indicador de carga -->
+  <div *ngIf="loading" class="loading">Cargando datos, por favor espera...</div>
+
+  <!-- Tabla de festivos -->
+  <table class="festivos-table" *ngIf="!loading && festivos.length > 0">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Día</th>
+        <th>Mes</th>
+        <th>Días desde Pascua</th>
+        <th>Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let festivo of festivos">
+        <td>{{ festivo.nombre }}</td>
+        <td>{{ festivo.dia || 'N/A' }}</td>
+        <td>{{ festivo.mes || 'N/A' }}</td>
+        <td>{{ festivo.diasPascua }}</td>
+        <td>{{ festivo.idTipo }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Mensaje si no hay datos -->
+  <div *ngIf="!loading && festivos.length === 0" class="no-data">
+    No hay datos para mostrar.
+  </div>
+</div>

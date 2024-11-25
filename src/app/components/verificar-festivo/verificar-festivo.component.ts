@@ -1,14 +1,35 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // Para manejar el formulario
+import { CommonModule } from '@angular/common';
+import { FestivoService } from '../../services/festivos.service';
 
 @Component({
   selector: 'app-verificar-festivo',
-  templateUrl: './verificar-festivo.component.html'
+  standalone: true,
+  imports: [CommonModule, FormsModule], // Importa los módulos necesarios
+  templateUrl: './verificar-festivo.component.html',
+  styleUrls: ['./verificar-festivo.component.css'],
 })
 export class VerificarFestivoComponent {
-  fecha: string = '';
-  esFestivo: boolean = false;
+  year: number = new Date().getFullYear(); // Año predeterminado
+  month: number = 1; // Mes predeterminado (enero)
+  day: number = 1; // Día predeterminado
+  resultado: string = ''; // Resultado de la verificación
+  error: string = ''; // Mensaje de error, si lo hay
 
-  verificarFecha() {
-    this.esFestivo = this.fecha === '2024-01-01'; // Cambia esta lógica según tus necesidades
+  constructor(private festivoService: FestivoService) {}
+
+  verificarFecha(): void {
+    this.resultado = ''; // Limpia el resultado anterior
+    this.error = ''; // Limpia errores anteriores
+
+    this.festivoService.verificarFecha(this.year, this.month, this.day).subscribe({
+      next: (response) => {
+        this.resultado = response; // Muestra el resultado devuelto por el backend
+      },
+      error: (err) => {
+        this.error = err.error || 'Ocurrió un error al verificar la fecha'; // Maneja errores
+      },
+    });
   }
 }
