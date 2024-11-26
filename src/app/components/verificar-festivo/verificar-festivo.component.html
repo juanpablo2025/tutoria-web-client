@@ -1,25 +1,55 @@
 <div class="container">
-    <h1>Verificar si una fecha es festiva</h1>
-  
-    <!-- Formulario para ingresar la fecha -->
-    <form (submit)="verificarFecha(); $event.preventDefault()">
+  <h1>Verifica si una fecha es festiva</h1>
+
+  <!-- Formulario -->
+  <form (submit)="verificarFecha(); $event.preventDefault()">
+    <div class="form-group">
       <label for="year">Año:</label>
-      <input id="year" type="number" [(ngModel)]="year" min="2000" max="2100" required />
-  
+      <input
+        id="year"
+        type="number"
+        [(ngModel)]="year"
+        [ngModelOptions]="{ standalone: true }"
+        min="2000"
+        max="2100"
+        required
+      />
+    </div>
+
+    <div class="form-group">
       <label for="month">Mes:</label>
-      <input id="month" type="number" [(ngModel)]="month" min="1" max="12" required />
-  
+      <input
+        id="month"
+        type="number"
+        [(ngModel)]="month"
+        [ngModelOptions]="{ standalone: true }"
+        min="1"
+        max="12"
+        required
+      />
+    </div>
+
+    <div class="form-group">
       <label for="day">Día:</label>
-      <input id="day" type="number" [(ngModel)]="day" min="1" max="31" required />
-  
-      <button type="submit">Verificar</button>
-    </form>
-  
-    <!-- Resultado o error -->
-    <div *ngIf="resultado" class="resultado">
-      Resultado: {{ resultado }}
+      <input
+        id="day"
+        type="number"
+        [(ngModel)]="day"
+        [ngModelOptions]="{ standalone: true }"
+        min="1"
+        max="31"
+        required
+      />
     </div>
-    <div *ngIf="error" class="error">
-      Error: {{ error }}
-    </div>
+
+    <button type="submit" class="btn">Verificar</button>
+  </form>
+
+  <!-- Resultado o error -->
+  <div *ngIf="resultado" class="resultado">
+    Resultado: {{ resultado }}
   </div>
+  <div *ngIf="error" class="error">
+    Error: {{ error }}
+  </div>
+</div>

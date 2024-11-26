@@ -21,7 +21,7 @@ export class FestivoService {
 
   verificarFecha(year: number, month: number, day: number): Observable<string> {
     const url = `${this.apiUrl}/verificar/${year}/${month}/${day}`;
-    return this.http.get<string>(url); // Realiza una solicitud GET
+    return this.http.get(url, { responseType: 'text' }); // Asegura que el tipo de respuesta sea texto
   }
 
 

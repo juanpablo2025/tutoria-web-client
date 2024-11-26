@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Para manejar el formulario
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FestivoService } from '../../services/festivos.service';
 
@@ -12,7 +12,7 @@ import { FestivoService } from '../../services/festivos.service';
 })
 export class VerificarFestivoComponent {
   year: number = new Date().getFullYear(); // Año predeterminado
-  month: number = 1; // Mes predeterminado (enero)
+  month: number = 1; // Mes predeterminado
   day: number = 1; // Día predeterminado
   resultado: string = ''; // Resultado de la verificación
   error: string = ''; // Mensaje de error, si lo hay
@@ -25,7 +25,7 @@ export class VerificarFestivoComponent {
 
     this.festivoService.verificarFecha(this.year, this.month, this.day).subscribe({
       next: (response) => {
-        this.resultado = response; // Muestra el resultado devuelto por el backend
+        this.resultado = response; // Muestra el resultado directamente
       },
       error: (err) => {
         this.error = err.error || 'Ocurrió un error al verificar la fecha'; // Maneja errores
